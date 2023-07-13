@@ -54,26 +54,31 @@
       <h3>Your Books</h3>
       <div class="filters-search-container">
         <div class="filters-container">
-          <label for="filter">Filter:</label>
-          <select name="filter" id="filter">
-            <option value="a-z">A-Z</option>
-            <option value="z-a">Z-A</option>
-            <option value="genre">Genre</option>
-            <option value="read">Read</option>
-            <option value="favorite">Favorite</option>
-          </select>
-          <label for="filter-genre">Genre:</label>
-          <select name="filter-genre" id="filter-genre">
-            <option value="biography">Biography</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="fiction">Fiction</option>
-            <option value="humor">Humor</option>
-            <option value="mystery">Mystery</option>
-            <option value="novel">Novel</option>
-            <option value="romance">Romance</option>
-            <option value="thriller">Thriller</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="filter-choice-container">
+            <label for="filter">Filter:</label>
+            <select name="filter" id="filter">
+              <option value="a-z">A-Z</option>
+              <option value="z-a">Z-A</option>
+              <option value="genre">Genre</option>
+              <option value="read">Read</option>
+              <option value="favorite">Favorite</option>
+            </select>
+          </div>
+          <div class="filter-genre-container">
+            <label for="filter-genre">Genre:</label>
+            <select name="filter-genre" id="filter-genre">
+              <option value="all">All</option>
+              <option value="biography">Biography</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="fiction">Fiction</option>
+              <option value="humor">Humor</option>
+              <option value="mystery">Mystery</option>
+              <option value="novel">Novel</option>
+              <option value="romance">Romance</option>
+              <option value="thriller">Thriller</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
         </div>
         <div class="search-container">
           <input type="search" id="search" name="search" placeholder="Title or Author">
@@ -81,7 +86,7 @@
         </div>
       </div>
       <div class="book-cards">
-
+        
       </div>
     </div>
   </div>

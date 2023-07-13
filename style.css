@@ -40,6 +40,14 @@ header {
   border: solid 2px red;
 }
 
+.filters-container {
+  display: flex;
+}
+
+/* .filter-genre-container {
+  visibility: hidden;
+} */
+
 .search-container {
   margin-left: auto;
 }
