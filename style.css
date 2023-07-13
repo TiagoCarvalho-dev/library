@@ -1,3 +1,56 @@
+:root {
+  box-sizing: border-box;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background-color: gray;
+}
+
+header {
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  border: solid 2px blue;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  border: solid 2px purple;
+}
+
+/* form {
+  visibility: hidden;
+} */
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: solid 2px green;
+}
+
+.filters-search-container {
+  display: flex;
+  border: solid 2px red;
+}
+
+.search-container {
+  margin-left: auto;
+}
+
+.book-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: solid 2px yellow;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
 }
