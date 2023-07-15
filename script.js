@@ -30,15 +30,12 @@ function addBook() {
 }
 
 function makeBookCard() {
-  myLibrary.forEach(book => {
-    document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card');
-    document.querySelector('.book-card').appendChild(document.createElement('h4')).textContent = book.title;
-    document.querySelector('.book-card').appendChild(document.createElement('p')).textContent = book.author;
-    document.querySelector('.book-card').appendChild(document.createElement('p')).textContent = book.observation;
-    document.querySelector('.book-card').appendChild(document.createElement('p')).textContent = book.genre;
-    document.querySelector('.book-card').appendChild(document.createElement('div')).classList.add('card-buttons-container');
-    document.querySelector('.card-buttons-container').appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container').appendChild(document.createElement('button')).setAttribute('type', 'button');
-    event.preventDefault();
-  });
+    document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + (myLibrary.length - 1));
+    document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('h4')).textContent = myLibrary[(myLibrary.length - 1)].title;
+    document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('p')).textContent = myLibrary[(myLibrary.length - 1)].author;
+    document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('p')).textContent = myLibrary[(myLibrary.length - 1)].observation;
+    document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('p')).textContent = myLibrary[(myLibrary.length - 1)].genre;
+    document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + (myLibrary.length - 1));
+    document.querySelector('.card-buttons-container-' + (myLibrary.length - 1)).appendChild(document.createElement('button')).setAttribute('type', 'button');
+    document.querySelector('.card-buttons-container-' + (myLibrary.length - 1)).appendChild(document.createElement('button')).setAttribute('type', 'button');
 }
