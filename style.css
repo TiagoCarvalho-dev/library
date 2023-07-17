@@ -24,10 +24,6 @@ header {
   border: solid 2px purple;
 }
 
-/* form {
-  visibility: hidden;
-} */
-
 .right-side {
   display: flex;
   flex-direction: column;
@@ -44,10 +40,6 @@ header {
   display: flex;
 }
 
-/* .filter-genre-container {
-  visibility: hidden;
-} */
-
 .search-container {
   margin-left: auto;
 }
@@ -61,4 +53,8 @@ header {
 footer {
   margin-top: auto;
   text-align: center;
+}
+
+.hidden {
+  visibility: hidden;
 }
