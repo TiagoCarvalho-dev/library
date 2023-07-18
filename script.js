@@ -38,6 +38,8 @@ document.querySelector('.apply-button').addEventListener('click', () => {
     showAllBookCardsReversed();
   } else if (document.querySelector('#filter').value === 'read') {
     showAllReadBookCards();
+  } else if (document.querySelector('#filter').value === 'favorite') {
+    showAllFavoriteBookCards();
   }
 });
 
@@ -114,6 +116,26 @@ function showAllReadBookCards() {
   clearAllCards();
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].read) {
+      document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
+      document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
+      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
+      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
+      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
+      document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
+      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
+      document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
+      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
+      document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
+      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
+      document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+    }
+  }
+}
+
+function showAllFavoriteBookCards() {
+  clearAllCards();
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].favorite) {
       document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
       document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
       document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
