@@ -1,8 +1,8 @@
 // Hardcoded books used for developing
 
-let book0 = new Book('Book0', 'Author0', 'fantasy', 'this book is nice', true, false);
-let book1 = new Book('Book1', 'Author1', 'fiction', 'this book sucks', false, false);
-let book2 = new Book('Book2', 'Author2', 'biography', 'this book is alright', false, true);
+let book0 = new Book('Book0', 'Author0', 'Fantasy', 'this book is nice', true, false);
+let book1 = new Book('Book1', 'Author1', 'Fiction', 'this book sucks', false, false);
+let book2 = new Book('Book2', 'Author2', 'Biography', 'this book is alright', false, true);
 
 // End
 
@@ -56,7 +56,7 @@ function addBook() {
   let book = new Book(form.elements['title'].value, form.elements['author'].value, form.elements['genre'].value, form.elements['observation'].value);
   myLibrary.push(book);
   console.log(myLibrary);
-  makeBookCard();
+  addBookCard();
   form.elements['title'].value = '';
   form.elements['author'].value = '';
   form.elements['genre'].value = 'biography';
@@ -64,7 +64,7 @@ function addBook() {
   event.preventDefault();
 }
 
-function makeBookCard() {
+function addBookCard() {
   document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + (myLibrary.length - 1));
   document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('h4')).textContent = myLibrary[(myLibrary.length - 1)].title;
   document.querySelector('.book-card-' + (myLibrary.length - 1)).appendChild(document.createElement('p')).textContent = myLibrary[(myLibrary.length - 1)].author;
@@ -79,39 +79,34 @@ function makeBookCard() {
   document.querySelector('.card-buttons-container-' + (myLibrary.length - 1)).lastChild.textContent = 'ERASE';
 }
 
+function makeBookCard(i) {
+  document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
+  document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
+  document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
+  document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
+  document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
+  document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
+  document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
+  document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
+  document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
+  document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
+  document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
+  document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+}
+
 function showAllBookCards() {
   clearAllCards();
+  myLibrary.sort((a, b) => (a.title.localeCompare(b.title)));
   for (let i = 0; i < myLibrary.length; i++) {
-    document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
-    document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
-    document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
-    document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+    makeBookCard(i);
   }
 }
 
 function showAllBookCardsReversed() {
   clearAllCards();
-  for (let i = myLibrary.length - 1; i >= 0; i--) {
-    document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
-    document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
-    document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
-    document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
-    document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-    document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+  myLibrary.sort((a, b) => (b.title.localeCompare(a.title)));
+  for (let i = 0; i < myLibrary.length; i++) {
+    makeBookCard(i);
   }
 }
 
@@ -119,18 +114,7 @@ function showReadBookCards() {
   clearAllCards();
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].read) {
-      document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+      makeBookCard(i);
     }
   }
 }
@@ -139,18 +123,7 @@ function showFavoriteBookCards() {
   clearAllCards();
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].favorite) {
-      document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+      makeBookCard(i);
     }
   }
 }
@@ -159,18 +132,7 @@ function showSearchedBookCards() {
   clearAllCards();
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].title === document.querySelector('#search').value || myLibrary[i].author == document.querySelector('#search').value) {
-      document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+      makeBookCard(i);
     }
   }
 }
@@ -179,18 +141,7 @@ function showGenreBookCards() {
   clearAllCards();
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].genre === document.querySelector('#filter-genre').value) {
-      document.querySelector('.book-cards').appendChild(document.createElement('div')).classList.add('book-card-' + i);
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('h4')).textContent = myLibrary[i].title;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].author;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].observation;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
-      document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
-      document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-      document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+      makeBookCard(i);
     }
   }
 }
