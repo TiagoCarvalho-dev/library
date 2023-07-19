@@ -1,8 +1,8 @@
 // Hardcoded books used for developing
 
-let book0 = new Book('Book0', 'Author0', 'Fantasy', 'this book is nice', true, false);
-let book1 = new Book('Book1', 'Author1', 'Fiction', 'this book sucks', false, false);
-let book2 = new Book('Book2', 'Author2', 'Biography', 'this book is alright', false, true);
+let book0 = new Book('Book0', 'Author0', 'Fantasy', 'this book is nice');
+let book1 = new Book('Book1', 'Author1', 'Fiction', 'this book sucks');
+let book2 = new Book('Book2', 'Author2', 'Biography', 'this book is alright');
 
 // End
 
@@ -12,9 +12,7 @@ function Book(title, author, genre, observation) {
   this.title = title,
   this.author = author,
   this.genre = genre,
-  this.observation = observation,
-  this.read = false,
-  this.favorite = false
+  this.observation = observation
 }
 
 Book.prototype.toggleReadStatus = function() {
@@ -54,6 +52,9 @@ function clearAllCards() {
 
 function addBook() {
   let book = new Book(form.elements['title'].value, form.elements['author'].value, form.elements['genre'].value, form.elements['observation'].value);
+  if (document.querySelector('#read').checked) {
+    book.read = true;
+  }
   myLibrary.push(book);
   console.log(myLibrary);
   addBookCard();
