@@ -12,7 +12,9 @@ function Book(title, author, genre, observation) {
   this.title = title,
   this.author = author,
   this.genre = genre,
-  this.observation = observation
+  this.observation = observation,
+  this.read = false,
+  this.favorite = false
 }
 
 Book.prototype.toggleReadStatus = function() {
@@ -58,6 +60,7 @@ function addBook() {
   myLibrary.push(book);
   console.log(myLibrary);
   addBookCard();
+  showAllBookCards();
   form.elements['title'].value = '';
   form.elements['author'].value = '';
   form.elements['genre'].value = 'biography';
@@ -100,6 +103,7 @@ function showAllBookCards() {
   myLibrary.sort((a, b) => (a.title.localeCompare(b.title)));
   for (let i = 0; i < myLibrary.length; i++) {
     makeBookCard(i);
+    addReadEventListener(i);
   }
 }
 
@@ -108,6 +112,7 @@ function showAllBookCardsReversed() {
   myLibrary.sort((a, b) => (b.title.localeCompare(a.title)));
   for (let i = 0; i < myLibrary.length; i++) {
     makeBookCard(i);
+    addReadEventListener(i);
   }
 }
 
@@ -116,6 +121,7 @@ function showReadBookCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].read) {
       makeBookCard(i);
+      addReadEventListener(i);
     }
   }
 }
@@ -125,6 +131,7 @@ function showFavoriteBookCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].favorite) {
       makeBookCard(i);
+      addReadEventListener(i);
     }
   }
 }
@@ -134,6 +141,7 @@ function showSearchedBookCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].title === document.querySelector('#search').value || myLibrary[i].author == document.querySelector('#search').value) {
       makeBookCard(i);
+      addReadEventListener(i);
     }
   }
 }
@@ -143,6 +151,17 @@ function showGenreBookCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].genre === document.querySelector('#filter-genre').value) {
       makeBookCard(i);
+      addReadEventListener(i);
     }
   }
+}
+
+function addReadEventListener(i) {
+  document.querySelector('.card-buttons-container-' + i).firstChild.addEventListener('click', () => {
+    if (!myLibrary[i].read) {
+      myLibrary[i].read = true;
+    } else {
+      myLibrary[i].read = false;
+    };
+  });
 }
