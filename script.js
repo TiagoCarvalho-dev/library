@@ -104,6 +104,7 @@ function showAllBookCards() {
   for (let i = 0; i < myLibrary.length; i++) {
     makeBookCard(i);
     addReadEventListener(i);
+    addFavoriteEventListener(i);
   }
 }
 
@@ -113,6 +114,7 @@ function showAllBookCardsReversed() {
   for (let i = 0; i < myLibrary.length; i++) {
     makeBookCard(i);
     addReadEventListener(i);
+    addFavoriteEventListener(i);
   }
 }
 
@@ -122,6 +124,7 @@ function showReadBookCards() {
     if (myLibrary[i].read) {
       makeBookCard(i);
       addReadEventListener(i);
+      addFavoriteEventListener(i);
     }
   }
 }
@@ -132,6 +135,7 @@ function showFavoriteBookCards() {
     if (myLibrary[i].favorite) {
       makeBookCard(i);
       addReadEventListener(i);
+      addFavoriteEventListener(i);
     }
   }
 }
@@ -142,6 +146,7 @@ function showSearchedBookCards() {
     if (myLibrary[i].title === document.querySelector('#search').value || myLibrary[i].author == document.querySelector('#search').value) {
       makeBookCard(i);
       addReadEventListener(i);
+      addFavoriteEventListener(i);
     }
   }
 }
@@ -152,6 +157,7 @@ function showGenreBookCards() {
     if (myLibrary[i].genre === document.querySelector('#filter-genre').value) {
       makeBookCard(i);
       addReadEventListener(i);
+      addFavoriteEventListener(i);
     }
   }
 }
@@ -162,6 +168,16 @@ function addReadEventListener(i) {
       myLibrary[i].read = true;
     } else {
       myLibrary[i].read = false;
+    };
+  });
+}
+
+function addFavoriteEventListener(i) {
+  document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.addEventListener('click', () => {
+    if (!myLibrary[i].favorite) {
+      myLibrary[i].favorite = true;
+    } else {
+      myLibrary[i].favorite = false;
     };
   });
 }
