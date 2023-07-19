@@ -45,6 +45,13 @@ document.querySelector('.apply-button').addEventListener('click', () => {
   }
 });
 document.querySelector('.search-button').addEventListener('click', showSearchedBookCards);
+document.querySelector('#filter').addEventListener('change', () => {
+  if (document.querySelector('#filter').value === 'genre') {
+    document.querySelector('.filter-genre-container').classList.remove('hidden');
+  } else {
+    document.querySelector('.filter-genre-container').classList.add('hidden');
+  }
+});
 
 function clearAllCards() {
   while (document.querySelector('.book-cards').firstChild) {
@@ -65,6 +72,7 @@ function addBook() {
   form.elements['author'].value = '';
   form.elements['genre'].value = 'biography';
   form.elements['observation'].value = '';
+  form.elements['read'].checked = false;
   event.preventDefault();
 }
 
