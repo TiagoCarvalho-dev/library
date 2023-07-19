@@ -25,26 +25,16 @@ Book.prototype.toggleFavoriteStatus = function (){
   this.favorite ? this.favorite = false : this.favorite = true;
 }
 
-showAllBookCards();
-
 const form = document.querySelector('.add-book-form');
 
 document.querySelector('.new-book-button').addEventListener('click', () => form.classList.toggle('hidden'));
+
 document.querySelector('.add-book-button').addEventListener('click', addBook);
-document.querySelector('.apply-button').addEventListener('click', () => {
-  if (document.querySelector('#filter').value === 'a-z') {
-    showAllBookCards();
-  } else if (document.querySelector('#filter').value === 'z-a') {
-    showAllBookCardsReversed();
-  } else if (document.querySelector('#filter').value === 'genre') {
-    showGenreBookCards();
-  } else if (document.querySelector('#filter').value === 'read') {
-    showReadBookCards();
-  } else if (document.querySelector('#filter').value === 'favorite') {
-    showFavoriteBookCards();
-  }
-});
+
+document.querySelector('.apply-button').addEventListener('click', handleCardsDisplay);
+
 document.querySelector('.search-button').addEventListener('click', showSearchedBookCards);
+
 document.querySelector('#filter').addEventListener('change', () => {
   if (document.querySelector('#filter').value === 'genre') {
     document.querySelector('.filter-genre-container').classList.remove('hidden');
@@ -52,6 +42,21 @@ document.querySelector('#filter').addEventListener('change', () => {
     document.querySelector('.filter-genre-container').classList.add('hidden');
   }
 });
+
+function handleCardsDisplay() {
+  switch (document.querySelector('#filter').value) {
+    case ('a-z'): showAllBookCards();
+                  break;
+    case ('z-a'): showAllBookCardsReversed();
+                  break;
+    case ('genre'): showGenreBookCards();
+                  break;
+    case ('read'): showReadBookCards();
+                  break;
+    case ('favorite'): showFavoriteBookCards();
+                  break;
+  }
+}
 
 function clearAllCards() {
   while (document.querySelector('.book-cards').firstChild) {
@@ -65,12 +70,11 @@ function addBook() {
     book.read = true;
   }
   myLibrary.push(book);
-  console.log(myLibrary);
   makeBookCard(myLibrary.length - 1);
-  showAllBookCards();
+  handleCardsDisplay();
   form.elements['title'].value = '';
   form.elements['author'].value = '';
-  form.elements['genre'].value = 'biography';
+  form.elements['genre'].value = 'Biography';
   form.elements['observation'].value = '';
   form.elements['read'].checked = false;
   event.preventDefault();
@@ -173,6 +177,8 @@ function addEraseEventListener(i) {
   document.querySelector('.card-buttons-container-' + i).lastChild.addEventListener('click', () => {
     document.querySelector('.book-card-' + i).remove();
     myLibrary.splice(i, 1);
+    handleCardsDisplay();
+    console.log(myLibrary);
   });
 }
 
@@ -181,3 +187,5 @@ function addCardButtonsEventListener(i) {
   addFavoriteEventListener(i);
   addEraseEventListener(i);
 }
+
+showAllBookCards();
