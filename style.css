@@ -1,43 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
 
 :root {
   box-sizing: border-box;
   font-family: 'Montserrat', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --page-background: rgb(236, 232, 221);
-  --containers-background: rgb(248, 244, 234);
+  /* --card-background: rgb(236, 232, 221, 0.90); */
+  --containers-background: rgba(248, 244, 234, 0.90);
   --new-book-background: rgb(87, 155, 177);
   --add-book-background: rgb(255, 105, 105);
   --light-gray: rgba(58, 58, 58, 0.404);
   --gray: rgb(85, 85, 85);
+  --gold: rgb(212, 175, 55);
 }
 
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: var(--page-background);
+  background-image: url(./images/library-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 header {
-  text-align: start;
-  font-size: 1.8rem;
-  /* border: solid 2px red; */
-  margin: 30px;
+  width: 1100px;
+  margin: 20px;
+  border: 3px solid var(--gold);
+  border-radius: 10px;
+  background-color: var(--containers-background);
+}
+
+header > h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  font-family: 'Vollkorn', serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  height: 55px;
 }
 
 .main {
   display: flex;
-  border: solid 2px blue;
   flex-wrap: wrap;
 }
 
 .left-side {
   display: flex;
   flex-direction: column;
-  border: solid 2px purple;
   background-color: var(--containers-background);
   width: 650px;
   padding: 0 30px 0 30px;
+  margin: 20px;
+  border: 3px solid var(--gold);
+  border-radius: 10px;
 }
 
 .left-side h2 {
@@ -139,7 +153,7 @@ form input[type="checkbox"] {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
   width: 200px;
   height: 40px;
-  margin: 10px 10px 10px 0;
+  margin: 10px 10px 20px 0;
   float: right;
 }
 
@@ -147,9 +161,17 @@ form input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   flex: 1;
-  border: solid 2px green;
   padding: 0 30px 0 30px;
   background-color: var(--containers-background);
+  padding: 0 30px 0 30px;
+  margin: 20px;
+  border: 3px solid var(--gold);
+  border-radius: 10px;
+}
+
+.right-side h3 {
+  color: var(--gray);
+  font-size: 1.5rem;
 }
 
 .filters-search-container {
@@ -173,7 +195,15 @@ form input[type="checkbox"] {
 
 footer {
   margin-top: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   text-align: center;
+  padding: 0 30px 0 30px;
+  border: 3px solid var(--gold);
+  border-radius: 10px;
+  background-color: var(--containers-background);
+  font-weight: 600;
 }
 
 .hidden {
