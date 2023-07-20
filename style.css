@@ -1,16 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
   box-sizing: border-box;
+  font-family: 'Montserrat', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --page-background: rgb(236, 232, 221);
+  --containers-background: rgb(248, 244, 234);
+  --new-book-background: rgb(87, 155, 177);
 }
 
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: gray;
+  background-color: var(--page-background);
 }
 
 header {
-  text-align: center;
+  text-align: start;
+  font-size: 1.8rem;
+  /* border: solid 2px red; */
+  margin: 30px;
 }
 
 .main {
@@ -22,6 +31,41 @@ header {
   display: flex;
   flex-direction: column;
   border: solid 2px purple;
+  background-color: var(--containers-background);
+  width: 700px;
+  padding: 0 30px 0 30px;
+}
+
+.left-side h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.new-book-button {
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--new-book-background);
+  color: var(--containers-background);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
+  width: 200px;
+  height: 40px;
+}
+
+.new-book-button:active {
+  transform: translateY(1px);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
+}
+
+button > img {
+  vertical-align: middle;
+  filter: invert(97%) sepia(6%) saturate(351%) hue-rotate(354deg) brightness(96%) contrast(93%);
+}
+
+button > span {
+  vertical-align: middle;
 }
 
 .right-side {
@@ -29,6 +73,8 @@ header {
   flex-direction: column;
   flex: 1;
   border: solid 2px green;
+  padding: 0 30px 0 30px;
+  background-color: var(--containers-background);
 }
 
 .filters-search-container {
@@ -56,5 +102,5 @@ footer {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
