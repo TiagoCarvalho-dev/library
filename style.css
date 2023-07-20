@@ -6,6 +6,9 @@
   --page-background: rgb(236, 232, 221);
   --containers-background: rgb(248, 244, 234);
   --new-book-background: rgb(87, 155, 177);
+  --add-book-background: rgb(255, 105, 105);
+  --light-gray: rgba(58, 58, 58, 0.404);
+  --gray: rgb(85, 85, 85);
 }
 
 body {
@@ -25,6 +28,7 @@ header {
 .main {
   display: flex;
   border: solid 2px blue;
+  flex-wrap: wrap;
 }
 
 .left-side {
@@ -32,13 +36,14 @@ header {
   flex-direction: column;
   border: solid 2px purple;
   background-color: var(--containers-background);
-  width: 700px;
+  width: 650px;
   padding: 0 30px 0 30px;
 }
 
 .left-side h2 {
   font-size: 2rem;
   font-weight: 700;
+  color: var(--gray);
 }
 
 .new-book-button {
@@ -54,7 +59,8 @@ header {
   height: 40px;
 }
 
-.new-book-button:active {
+.new-book-button:active,
+.add-book-button:active {
   transform: translateY(1px);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
 }
@@ -66,6 +72,75 @@ button > img {
 
 button > span {
   vertical-align: middle;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form > div {
+  margin: 10px;
+}
+
+form label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+form input[type="text"],
+form textarea,
+form select {
+  background-color: var(--containers-background);
+  border: 1px solid var(--light-gray);
+  color: var(--gray);
+  border-radius: 7px;
+  padding-left: 10px;
+  margin-left: 5px;
+}
+
+form input[type="text"],
+form select {
+  height: 25px;
+  width: 350px;
+}
+
+form textarea {
+  height: 60px;
+  width: 300px;
+  resize: none;
+}
+
+form input[type="text"]:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border: solid 1px var(--new-book-background);
+}
+
+form input[type="checkbox"] {
+  accent-color: var(--new-book-background);
+  transform: scale(1.2);
+}
+
+.book-observation {
+  display: flex;
+  align-items: center;
+}
+
+.add-book-button {
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--add-book-background);
+  color: var(--containers-background);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
+  width: 200px;
+  height: 40px;
+  margin: 10px 10px 10px 0;
+  float: right;
 }
 
 .right-side {
