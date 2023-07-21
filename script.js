@@ -88,11 +88,11 @@ function makeBookCard(i) {
   document.querySelector('.book-card-' + i).appendChild(document.createElement('p')).textContent = myLibrary[i].genre;
   document.querySelector('.book-card-' + i).appendChild(document.createElement('div')).classList.add('card-buttons-container-' + i);
   document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-  document.querySelector('.card-buttons-container-' + i).firstChild.textContent = 'READ';
+  document.querySelector('.card-buttons-container-' + i).firstChild.appendChild(document.createElement('img')).setAttribute('src', './images/eye.svg');
   document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-  document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.textContent = 'FAVORITE';
+  document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.appendChild(document.createElement('img')).setAttribute('src', './images/star.svg');
   document.querySelector('.card-buttons-container-' + i).appendChild(document.createElement('button')).setAttribute('type', 'button');
-  document.querySelector('.card-buttons-container-' + i).lastChild.textContent = 'ERASE';
+  document.querySelector('.card-buttons-container-' + i).lastChild.appendChild(document.createElement('img')).setAttribute('src', './images/delete.svg');
 }
 
 function showAllBookCards() {
@@ -163,6 +163,7 @@ function addReadEventListener(i) {
     } else {
       myLibrary[i].read = false;
     };
+    document.querySelector('.card-buttons-container-' + i).firstChild.firstChild.classList.toggle('read');
   });
 }
 
@@ -173,6 +174,7 @@ function addFavoriteEventListener(i) {
     } else {
       myLibrary[i].favorite = false;
     };
+    document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.firstChild.classList.toggle('favorite');
   });
 }
 
@@ -189,6 +191,19 @@ function addCardButtonsEventListener(i) {
   addReadEventListener(i);
   addFavoriteEventListener(i);
   addEraseEventListener(i);
+  handleToggledButtons(i);
+}
+
+function handleToggledButtons(i) {
+  if (myLibrary[i].read) {
+    document.querySelector('.card-buttons-container-' + i).firstChild.firstChild.classList.add('read');
+  } else if (!myLibrary[i].read) {
+    document.querySelector('.card-buttons-container-' + i).firstChild.firstChild.classList.remove('read');
+  } else if (myLibrary[i].favorite) {
+    document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.firstChild.classList.add('favorite');
+  } else if (!myLibrary[i].favorite) {
+    document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.firstChild.classList.remove('favorite');
+  }
 }
 
 showAllBookCards();

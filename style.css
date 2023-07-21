@@ -4,13 +4,17 @@
 :root {
   box-sizing: border-box;
   font-family: 'Montserrat', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  /* --card-background: rgb(236, 232, 221, 0.90); */
+  --card-background: rgba(252, 247, 233, 0.9);
   --containers-background: rgba(248, 244, 234, 0.90);
   --new-book-background: rgb(87, 155, 177);
   --add-book-background: rgb(255, 105, 105);
   --light-gray: rgba(58, 58, 58, 0.404);
   --gray: rgb(85, 85, 85);
   --gold: rgb(212, 175, 55);
+  --silver: rgb(192,192,192);
+  --read-button-background: rgb(160, 196, 157);
+  --favorite-button-background: rgb(255, 224, 133);
+  --delete-button-background: rgb(233, 119, 119);
 }
 
 body {
@@ -80,7 +84,8 @@ header > h1 {
 .new-book-button:active,
 .add-book-button:active,
 .apply-button:active,
-.search-button:active {
+.search-button:active,
+.book-cards > div > div:last-child > button:active {
   transform: translateY(1px);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
 }
@@ -129,7 +134,7 @@ form select {
 }
 
 form textarea {
-  height: 60px;
+  height: 100px;
   width: 300px;
   resize: none;
 }
@@ -163,7 +168,7 @@ form input[type="checkbox"] {
   flex: 1;
   padding: 0 30px 0 30px;
   background-color: var(--containers-background);
-  padding: 0 30px 0 30px;
+  padding: 0 30px 30px 30px;
   margin: 20px;
   border: 3px solid var(--gold);
   border-radius: 10px;
@@ -171,14 +176,14 @@ form input[type="checkbox"] {
 
 .right-side h3 {
   color: var(--gray);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 0;
   min-width: 460px;
 }
 
 .filters-search-container {
   display: flex;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 1rem 0 0.5rem 0;
 }
 
 .filters-container,
@@ -216,10 +221,86 @@ form input[type="checkbox"] {
 .book-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border: solid 2px yellow;
+  gap: 15px;
+  padding-top: 10px;
 }
 
+.book-cards > div {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-background);
+  padding: 0 20px 20px 20px;
+  border: 3px solid var(--silver);
+  border-radius: 10px;
+}
 
+.book-cards h4 {
+  margin: 20px 0 0 0;
+  font-size: 1.2rem;
+}
+
+.book-cards > div > p:nth-child(2) {
+  margin: 5px 0 0 0;
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-align: end;
+}
+
+.book-cards > div > p:nth-child(3) {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.book-cards > div > p:nth-child(4) {
+  margin: 10px 0 20px 0;
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.book-cards > div > div:last-child {
+  display: flex;
+  margin-top: auto;
+  gap: 20px;
+}
+
+.book-cards > div > div:last-child > button {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--containers-background);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
+  width: 70px;
+  height: 30px;
+}
+
+.book-cards > div > div:last-child > button:first-child {
+  background-color: var(--read-button-background);
+}
+
+.book-cards > div > div:last-child > button:nth-child(2) {
+  background-color: var(--favorite-button-background);
+}
+
+.book-cards > div > div:last-child > button:last-child {
+  margin-left: auto;
+  background-color: var(--delete-button-background);
+}
+
+.book-cards > div > div:last-child > button > img {
+  width: 28px;
+  height: auto;
+}
+
+.read {
+  filter: invert(44%) sepia(46%) saturate(251%) hue-rotate(124deg) brightness(102%) contrast(86%);
+}
+
+.favorite {
+  filter: invert(86%) sepia(19%) saturate(3989%) hue-rotate(331deg) brightness(107%) contrast(102%);
+}
 
 footer {
   margin-top: auto;
