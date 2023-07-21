@@ -45,8 +45,6 @@ document.querySelector('#filter').addEventListener('change', () => {
 
 function handleCardsDisplay() {
   switch (document.querySelector('#filter').value) {
-    case ('a-z'): showAllBookCards();
-                  break;
     case ('z-a'): showAllBookCardsReversed();
                   break;
     case ('genre'): showGenreBookCards();
@@ -54,6 +52,8 @@ function handleCardsDisplay() {
     case ('read'): showReadBookCards();
                   break;
     case ('favorite'): showFavoriteBookCards();
+                  break;
+    default: showAllBookCards();
                   break;
   }
 }
