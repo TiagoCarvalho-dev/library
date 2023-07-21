@@ -135,6 +135,9 @@ function showFavoriteBookCards() {
 
 function showSearchedBookCards() {
   clearAllCards();
+  if (document.querySelector('#search').value === '') {
+    showAllBookCards();
+  }
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i].title === document.querySelector('#search').value || myLibrary[i].author == document.querySelector('#search').value) {
       makeBookCard(i);
