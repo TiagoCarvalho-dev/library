@@ -24,7 +24,6 @@ body {
 }
 
 header {
-  width: 1100px;
   margin: 20px;
   border: 3px solid var(--gold);
   border-radius: 10px;
@@ -40,7 +39,6 @@ header > h1 {
 
 .main {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .left-side {
@@ -48,6 +46,7 @@ header > h1 {
   flex-direction: column;
   background-color: var(--containers-background);
   width: 650px;
+  min-width: 530px;
   padding: 0 30px 0 30px;
   margin: 20px;
   border: 3px solid var(--gold);
@@ -60,7 +59,8 @@ header > h1 {
   color: var(--gray);
 }
 
-.new-book-button {
+.new-book-button,
+.add-book-button {
   font-size: 1.1rem;
   font-weight: 500;
   background-color: var(--new-book-background);
@@ -73,8 +73,14 @@ header > h1 {
   height: 40px;
 }
 
+.new-book-button {
+  background-color: var(--new-book-background);
+}
+
 .new-book-button:active,
-.add-book-button:active {
+.add-book-button:active,
+.apply-button:active,
+.search-button:active {
   transform: translateY(1px);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
 }
@@ -96,7 +102,8 @@ form > div {
   margin: 10px;
 }
 
-form label {
+form label,
+.filters-search-container {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--gray);
@@ -104,7 +111,9 @@ form label {
 
 form input[type="text"],
 form textarea,
-form select {
+form select,
+.filters-search-container select,
+.filters-search-container input[type="search"] {
   background-color: var(--containers-background);
   border: 1px solid var(--light-gray);
   color: var(--gray);
@@ -143,16 +152,7 @@ form input[type="checkbox"] {
 }
 
 .add-book-button {
-  font-size: 1.1rem;
-  font-weight: 500;
   background-color: var(--add-book-background);
-  color: var(--containers-background);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
-  width: 200px;
-  height: 40px;
   margin: 10px 10px 20px 0;
   float: right;
 }
@@ -172,19 +172,45 @@ form input[type="checkbox"] {
 .right-side h3 {
   color: var(--gray);
   font-size: 1.5rem;
+  margin-bottom: 0;
+  min-width: 460px;
 }
 
 .filters-search-container {
   display: flex;
-  border: solid 2px red;
+  padding: 0.5rem 0 0.5rem 0;
 }
 
-.filters-container {
+.filters-container,
+.search-container {
   display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .search-container {
   margin-left: auto;
+  flex: 1;
+  padding: 0 1rem 0 1rem;
+}
+
+.search-container input[type="search"] {
+  flex-grow: 1;
+}
+
+.apply-button,
+.search-button {
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--new-book-background);
+  color: var(--containers-background);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
+  width: 110px;
+  height: 24px;
 }
 
 .book-cards {
