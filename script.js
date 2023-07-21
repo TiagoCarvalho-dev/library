@@ -1,8 +1,8 @@
 // Hardcoded books used for developing
 
-let book0 = new Book('Book0', 'Author0', 'Fantasy', 'this book is nice');
-let book1 = new Book('Book1', 'Author1', 'Fiction', 'this book sucks');
-let book2 = new Book('Book2', 'Author2', 'Biography', 'this book is alright');
+let book0 = new Book('Eragon', 'Christopher Paolin', 'Fantasy', 'Eragon is the first book in The Inheritance Cycle by American fantasy writer Christopher Paolini.');
+let book1 = new Book('A Brief History of Time', 'Stephen Hawking', 'Other', 'A Brief History of Time: From the Big Bang to Black Holes is a book on theoretical cosmology by English physicist Stephen Hawking.');
+let book2 = new Book('The Hobbit', '. R. R. Tolkien', 'Fantasy', 'The Hobbit, or There and Back Again is a children\'s fantasy novel by English author J. R. R. Tolkien. It was published in 1937 to wide critical acclaim.');
 
 // End
 
