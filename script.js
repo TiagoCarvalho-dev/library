@@ -183,7 +183,6 @@ function addEraseEventListener(i) {
     document.querySelector('.book-card-' + i).remove();
     myLibrary.splice(i, 1);
     handleCardsDisplay();
-    console.log(myLibrary);
   });
 }
 
@@ -191,17 +190,22 @@ function addCardButtonsEventListener(i) {
   addReadEventListener(i);
   addFavoriteEventListener(i);
   addEraseEventListener(i);
-  handleToggledButtons(i);
+  handleReadButtonDisplay(i);
+  handleFavoriteButtonDisplay(i);
 }
 
-function handleToggledButtons(i) {
+function handleReadButtonDisplay(i) {
   if (myLibrary[i].read) {
     document.querySelector('.card-buttons-container-' + i).firstChild.firstChild.classList.add('read');
-  } else if (!myLibrary[i].read) {
+  } else {
     document.querySelector('.card-buttons-container-' + i).firstChild.firstChild.classList.remove('read');
-  } else if (myLibrary[i].favorite) {
+  }
+}
+
+function handleFavoriteButtonDisplay(i) {
+  if (myLibrary[i].favorite) {
     document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.firstChild.classList.add('favorite');
-  } else if (!myLibrary[i].favorite) {
+  } else {
     document.querySelector('.card-buttons-container-' + i).firstChild.nextSibling.firstChild.classList.remove('favorite');
   }
 }
