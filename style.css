@@ -39,6 +39,7 @@ header > h1 {
   font-size: 3.5rem;
   font-family: 'Vollkorn', serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   height: 55px;
+  color: var(--gray);
 }
 
 .main {
@@ -237,6 +238,7 @@ form input[type="checkbox"] {
 .book-cards h4 {
   margin: 20px 0 0 0;
   font-size: 1.2rem;
+  color: black;
 }
 
 .book-cards > div > p:nth-child(2) {
@@ -250,7 +252,7 @@ form input[type="checkbox"] {
   margin: 5px 0 0 0;
   font-size: 1rem;
   color: var(--gray);
-  /* max-width: 20px; */
+  word-wrap: break-word;
 }
 
 .book-cards > div > p:nth-child(4) {
@@ -318,6 +320,7 @@ footer {
   border-radius: 10px;
   background-color: var(--containers-background);
   font-weight: 600;
+  color: var(--gray);
 }
 
 .hidden {
