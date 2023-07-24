@@ -15,19 +15,20 @@
   --read-button-background: rgb(160, 196, 157);
   --favorite-button-background: rgb(255, 224, 133);
   --delete-button-background: rgb(233, 119, 119);
+  --background-color: rgba(255, 250, 227, 0.9);
 }
 
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-image: url(./images/library-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-color: var(--background-color);
 }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 20px;
   border: 3px solid var(--gold);
   border-radius: 10px;
@@ -35,7 +36,6 @@ header {
 }
 
 header > h1 {
-  text-align: center;
   font-size: 3.5rem;
   font-family: 'Vollkorn', serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   height: 55px;
@@ -44,6 +44,7 @@ header > h1 {
 
 .main {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .left-side {
@@ -59,7 +60,7 @@ header > h1 {
 }
 
 .left-side h2 {
-  font-size: 2rem;
+  font-size: 2.3rem;
   font-weight: 700;
   color: var(--gray);
 }
@@ -80,6 +81,7 @@ header > h1 {
 
 .new-book-button {
   background-color: var(--new-book-background);
+  margin-bottom: 20px;
 }
 
 .new-book-button:active,
@@ -170,7 +172,7 @@ form input[type="checkbox"] {
   padding: 0 30px 0 30px;
   background-color: var(--containers-background);
   padding: 0 30px 30px 30px;
-  margin: 20px 20px 20px 0;
+  margin: 20px 20px 20px 20px;
   border: 3px solid var(--gold);
   border-radius: 10px;
 }
@@ -202,7 +204,7 @@ form input[type="checkbox"] {
 }
 
 .search-container input[type="search"] {
-  flex-grow: 1;
+  flex-grow: 3;
 }
 
 .apply-button,
@@ -217,6 +219,7 @@ form input[type="checkbox"] {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
   width: 110px;
   height: 24px;
+  flex-grow: 1;
 }
 
 .book-cards {
