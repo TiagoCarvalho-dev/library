@@ -1,3 +1,22 @@
+class Book {
+  constructor(title, author, genre, observation) {
+    this.title = title,
+    this.author = author,
+    this.genre = genre,
+    this.observation = observation,
+    this.read = false,
+    this.favorite = false
+  }
+
+  toggleReadStatus() {
+    this.read ? this.read = false : this.read = true;
+  }
+
+  toggleFavoriteStatus() {
+    this.favorite ? this.favorite = false : this.favorite = true;
+  }
+}
+
 // Hardcoded books used for developing
 
 let book0 = new Book('Eragon', 'Christopher Paolini', 'Fantasy', 'Eragon is the first book in The Inheritance Cycle by American fantasy writer Christopher Paolini.');
@@ -7,23 +26,6 @@ let book2 = new Book('The Hobbit', 'J. R. R. Tolkien', 'Fantasy', 'The Hobbit, o
 // End
 
 let myLibrary = [book0, book1, book2];
-
-function Book(title, author, genre, observation) {
-  this.title = title,
-  this.author = author,
-  this.genre = genre,
-  this.observation = observation,
-  this.read = false,
-  this.favorite = false
-}
-
-Book.prototype.toggleReadStatus = function() {
-  this.read ? this.read = false : this.read = true;
-}
-
-Book.prototype.toggleFavoriteStatus = function (){
-  this.favorite ? this.favorite = false : this.favorite = true;
-}
 
 const form = document.querySelector('.add-book-form');
 
